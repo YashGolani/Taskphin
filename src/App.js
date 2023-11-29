@@ -1,40 +1,52 @@
 import React, { useState } from "react";
-import JobCard from "./JobCard";
-import Modal from "./Modal";
+import JobCard from "./components/JobCard";
+import ModalOne from "./components/ModalOne";
+import { ModalTwo } from "./components/ModalTwo";
+import EditModal from "./components/EditModal";
 
 const App = () => {
   const [dataArray, setDataArray] = useState([
     {
       id: 1,
       title: "UX UI Designer",
-      companyName: "Great Vibes - Information Technology",
+      companyName: "Great Vibes",
+      industry: "Information Technology",
       location: "Chennai, Tamilnadu, India (In-office)",
       time: "Part-Time (9.00 am - 5.00 pm IST)",
-      experience: "1 - 2 years",
-      salary: 30000,
+      minExperience: 1,
+      maxExperience: 2,
+      minSalary: 30000,
+      maxSalary: 30000,
       employees: "51-200",
     },
     {
       id: 2,
       title: "UX UI Designer",
-      companyName: "Great Vibes - Information Technology",
+      companyName: "Great Vibes",
+      industry: "Information Technology",
       location: "Chennai, Tamilnadu, India (In-office)",
       time: "Part-Time (9.00 am - 5.00 pm IST)",
-      experience: "1 - 2 years",
-      salary: 30000,
+      minExperience: 1,
+      maxExperience: 2,
+      minSalary: 30000,
+      maxSalary: 30000,
       employees: "51-200",
     },
   ]);
   const [newData, setNewData] = useState({
     title: "",
     companyName: "",
+    industry: "",
     location: "",
     time: "",
-    experience: "",
-    salary: "",
+    minExperience: "",
+    maxExperience: "",
+    minSalary: "",
+    maxSalary: "",
     employees: "",
   });
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [editId, setEditId] = useState(null);
 
   const handleInputChange = (e) => {
@@ -46,21 +58,24 @@ const App = () => {
     setNewData({
       title: "",
       companyName: "",
+      industry: "",
       location: "",
       time: "",
-      experience: "",
-      salary: "",
+      minExperience: "",
+      maxExperience: "",
+      minSalary: "",
+      maxSalary: "",
       employees: "",
     });
 
-    setIsModalOpen(true);
+    setIsAddModalOpen(true);
   };
 
   const handleEdit = (id) => {
     const itemToEdit = dataArray.find((item) => item.id === id);
     setNewData(itemToEdit);
     setEditId(id);
-    setIsModalOpen(true);
+    setIsEditModalOpen(true);
   };
 
   const handleDelete = (id) => {
@@ -68,29 +83,34 @@ const App = () => {
     setDataArray(updatedData);
   };
 
-  const isModal = () => {
-    setIsModalOpen(!isModalOpen);
+  const isEditModal = () => {
+    setIsEditModalOpen(!isEditModalOpen);
+  };
+
+  const isAddModal = () => {
+    setIsAddModalOpen(!isAddModalOpen);
   };
 
   const handleAddJob = () => {
     if (
       newData.title &&
       newData.companyName &&
+      newData.industry &&
       newData.location &&
       newData.time &&
-      newData.experience &&
-      newData.salary &&
+      newData.minExperience &&
+      newData.maxExperience &&
+      newData.minSalary &&
+      newData.maxSalary &&
       newData.employees
     ) {
       if (editId !== null) {
-        // If editId is not null, update the existing item
         const updatedData = dataArray.map((item) =>
           item.id === editId ? { ...item, ...newData } : item
         );
         setDataArray(updatedData);
-        setEditId(null); // Reset editId after editing
+        setEditId(null);
       } else {
-        // If editId is null, add a new item
         const nextId =
           dataArray.length > 0 ? dataArray[dataArray.length - 1].id + 1 : 1;
         setDataArray([...dataArray, { id: nextId, ...newData }]);
@@ -99,7 +119,7 @@ const App = () => {
       alert("Please fill out all fields before adding.");
     }
 
-    setIsModalOpen(false);
+    setIsEditModalOpen(false);
   };
 
   return (
@@ -124,11 +144,17 @@ const App = () => {
           </div>
         ))}
       </div>
-
-      {/* Modal for input fields */}
-      {isModalOpen && (
-        <Modal
-          isModal={isModal}
+      {isEditModalOpen && (
+        <EditModal
+          isEditModal={isEditModal}
+          newData={newData}
+          handleInputChange={handleInputChange}
+          handleAddButtonClick={handleAddJob}
+        />
+      )}
+      {isAddModalOpen && (
+        <ModalOne
+          isAddModal={isAddModal}
           newData={newData}
           handleInputChange={handleInputChange}
           handleAddButtonClick={handleAddJob}
