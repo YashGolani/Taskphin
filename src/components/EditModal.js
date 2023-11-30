@@ -50,7 +50,7 @@ const EditModal = ({
                 name="title"
                 value={newData.title}
                 onChange={handleInputChange}
-                className="border border-gray-300 rounded-md p-2 sm:p-4 focus:outline-none focus:ring focus:border-blue-500"
+                className="w-full border border-gray-300 rounded-md p-2 sm:p-4 focus:outline-none focus:ring focus:border-blue-500"
               />
 
               {/* Company Name */}
@@ -60,7 +60,7 @@ const EditModal = ({
                 name="companyName"
                 value={newData.companyName}
                 onChange={handleInputChange}
-                className="border border-gray-300 rounded-md p-2 sm:p-4 focus:outline-none focus:ring focus:border-blue-500"
+                className="w-full border border-gray-300 rounded-md p-2 sm:p-4 focus:outline-none focus:ring focus:border-blue-500"
               />
 
               {/* Location */}
@@ -70,7 +70,7 @@ const EditModal = ({
                 name="location"
                 value={newData.location}
                 onChange={handleInputChange}
-                className="border border-gray-300 rounded-md p-2 sm:p-4 focus:outline-none focus:ring focus:border-blue-500"
+                className="w-full border border-gray-300 rounded-md p-2 sm:p-4 focus:outline-none focus:ring focus:border-blue-500"
               />
 
               {/* Time */}
@@ -80,29 +80,48 @@ const EditModal = ({
                 name="time"
                 value={newData.time}
                 onChange={handleInputChange}
-                className="border border-gray-300 rounded-md p-2 sm:p-4 focus:outline-none focus:ring focus:border-blue-500"
+                className="w-full border border-gray-300 rounded-md p-2 sm:p-4 focus:outline-none focus:ring focus:border-blue-500"
               />
 
               {/* Experience */}
-              <input
-                type="text"
-                placeholder="Experience"
-                name="experience"
-                value={newData.experience}
-                onChange={handleInputChange}
-                className="border border-gray-300 rounded-md p-2 sm:p-4 focus:outline-none focus:ring focus:border-blue-500"
-              />
+              <div className="flex space-x-4">
+                <input
+                  type="number"
+                  placeholder="Min Experience"
+                  name="minExperience"
+                  value={newData.minExperience}
+                  onChange={handleInputChange}
+                  className="w-full border border-gray-300 rounded-md p-2 sm:p-4 focus:outline-none focus:ring focus:border-blue-500"
+                />
+                <input
+                  type="number"
+                  placeholder="Max Experience"
+                  name="maxExperience"
+                  value={newData.maxExperience}
+                  onChange={handleInputChange}
+                  className="w-full border border-gray-300 rounded-md p-2 sm:p-4 focus:outline-none focus:ring focus:border-blue-500"
+                />
+              </div>
 
               {/* Salary */}
-              <input
-                type="number"
-                placeholder="Salary"
-                name="salary"
-                value={newData.salary}
-                onChange={handleInputChange}
-                className="border border-gray-300 rounded-md p-2 sm:p-4 focus:outline-none focus:ring focus:border-blue-500"
-                aria-errormessage="Please enter a valid number"
-              />
+              <div className="flex space-x-4">
+                <input
+                  type="number"
+                  placeholder="Min Salary"
+                  name="minSalary"
+                  value={newData.minSalary}
+                  onChange={handleInputChange}
+                  className="w-full border border-gray-300 rounded-md p-2 sm:p-4 focus:outline-none focus:ring focus:border-blue-500"
+                />
+                <input
+                  type="number"
+                  placeholder="Max Salary"
+                  name="maxSalary"
+                  value={newData.maxSalary}
+                  onChange={handleInputChange}
+                  className="w-full border border-gray-300 rounded-md p-2 sm:p-4 focus:outline-none focus:ring focus:border-blue-500"
+                />
+              </div>
 
               {/* Employees */}
               <input
@@ -111,7 +130,7 @@ const EditModal = ({
                 name="employees"
                 value={newData.employees}
                 onChange={handleInputChange}
-                className="border border-gray-300 rounded-md p-2 sm:p-4 focus:outline-none focus:ring focus:border-blue-500"
+                className="w-full border border-gray-300 rounded-md p-2 sm:p-4 focus:outline-none focus:ring focus:border-blue-500"
               />
             </div>
 

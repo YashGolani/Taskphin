@@ -1,13 +1,17 @@
 import React from "react";
 
-export const ModalTwo = ({
+const ModalTwo = ({
   handleInputChange,
   newData,
-  isModal,
-  handleAddButtonClick,
+  secondModal,
+  handleAddJob,
+  setSecondModal,
+  isAddModal,
 }) => {
   return (
-    <div className={`${isModal ? "fixed" : "hidden"} inset-0 overflow-y-auto`}>
+    <div
+      className={`${secondModal ? "fixed" : "hidden"} inset-0 overflow-y-auto`}
+    >
       <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
         <div className="fixed inset-0 transition-opacity">
           <div className="absolute inset-0 bg-gray-500 opacity-75"></div>
@@ -24,7 +28,7 @@ export const ModalTwo = ({
                 <input
                   type="number"
                   placeholder="Minimum Experience"
-                  name="experience"
+                  name="minExperience"
                   value={newData.minExperience}
                   onChange={handleInputChange}
                   className="w-full mr-3 border border-gray-300 rounded-md p-2 sm:p-4 focus:outline-none focus:ring focus:border-blue-500"
@@ -32,7 +36,7 @@ export const ModalTwo = ({
                 <input
                   type="number"
                   placeholder="Maximum Experience"
-                  name="experience"
+                  name="maxExperience"
                   value={newData.maxExperience}
                   onChange={handleInputChange}
                   className="w-full ml-3 border border-gray-300 rounded-md p-2 sm:p-4 focus:outline-none focus:ring focus:border-blue-500"
@@ -43,17 +47,17 @@ export const ModalTwo = ({
               <div className="flex">
                 <input
                   type="number"
-                  placeholder="Minimum Experience"
-                  name="experience"
-                  value={newData.minExperience}
+                  placeholder="Minimum Salary"
+                  name="minSalary"
+                  value={newData.minSalary}
                   onChange={handleInputChange}
                   className="w-full mr-3 border border-gray-300 rounded-md p-2 sm:p-4 focus:outline-none focus:ring focus:border-blue-500"
                 />
                 <input
                   type="number"
-                  placeholder="Maximum Experience"
-                  name="experience"
-                  value={newData.maxExperience}
+                  placeholder="Maximum Salary"
+                  name="maxSalary"
+                  value={newData.maxSalary}
                   onChange={handleInputChange}
                   className="w-full ml-3 border border-gray-300 rounded-md p-2 sm:p-4 focus:outline-none focus:ring focus:border-blue-500"
                 />
@@ -92,19 +96,17 @@ export const ModalTwo = ({
               </div>
             </div>
 
-            <div className="flex justify-center items-center mt-8">
+            <div className="flex justify-end items-center mt-8">
               {/* Add and Close buttons */}
               <button
-                onClick={handleAddButtonClick}
+                onClick={() => {
+                  handleAddJob();
+                  setSecondModal(!secondModal);
+                  isAddModal();
+                }}
                 className="bg-blue-500 text-white px-6 py-3 rounded-md hover:bg-blue-700 hover:text-white"
               >
-                Add
-              </button>
-              <button
-                onClick={isModal}
-                className="ml-4 text-blue-500 hover:text-blue-700 focus:outline-none"
-              >
-                Cancel
+                Save
               </button>
             </div>
           </div>
@@ -113,3 +115,5 @@ export const ModalTwo = ({
     </div>
   );
 };
+
+export default ModalTwo;

@@ -2,6 +2,7 @@ import React from "react";
 import { FaEdit, FaTrash } from "react-icons/fa";
 
 function JobCard({ data, onEdit, onDelete }) {
+  console.log("🚀 ~ file: JobCard.js:5 ~ JobCard ~ data:", data);
   const unsplashLink = "https://source.unsplash.com/featured/640x480";
   const imageUrl = `${unsplashLink}?${data.id}`;
 
@@ -38,9 +39,15 @@ function JobCard({ data, onEdit, onDelete }) {
           </p>
           <p className="mb-1">{`Salary: (${data.minSalary} - ${data.maxSalary}) /Month`}</p>
           <p className="mb-1">Employees: {data.employees}</p>
-          <button className="mt-3 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-700 hover:text-white">
-            Apply Now
-          </button>
+          {data.applyType === "quick" ? (
+            <button className="mt-3 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-700 hover:text-white">
+              Apply Now
+            </button>
+          ) : (
+            <button className="mt-3 text-blue-500 px-4 py-2 rounded-md border border-blue-500">
+              External
+            </button>
+          )}
         </div>
       </div>
     </div>

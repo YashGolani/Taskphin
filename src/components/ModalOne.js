@@ -4,8 +4,16 @@ const ModalOne = ({
   handleInputChange,
   newData,
   isAddModal,
-  handleAddButtonClick,
+  setSecondModal,
 }) => {
+  const handleNext = () => {
+    if (newData.title && newData.companyName && newData.industry) {
+      setSecondModal(true);
+    } else {
+      alert("Please fill out all required fields before proceedinggggg.");
+    }
+  };
+
   return (
     <div
       className={`${isAddModal ? "fixed" : "hidden"} inset-0 overflow-y-auto`}
@@ -24,11 +32,12 @@ const ModalOne = ({
               <h2 className="text-2xl font-semibold">Step 1</h2>
             </div>
             <div className="mt-6 space-y-4">
-              <h2 className="text-lg">Job Title</h2>
+              <h2 className="text-lg">Job Title *</h2>
               <input
                 type="text"
                 placeholder="Title"
                 name="title"
+                required
                 value={newData.title}
                 onChange={handleInputChange}
                 className="w-full border border-gray-300 rounded-md p-2 sm:p-4 focus:outline-none focus:ring focus:border-blue-500"
@@ -36,8 +45,9 @@ const ModalOne = ({
               <h2 className="text-lg">Company Name</h2>
               <input
                 type="text"
-                placeholder="Company Name"
+                placeholder="Company Name *"
                 name="companyName"
+                required
                 value={newData.companyName}
                 onChange={handleInputChange}
                 className="w-full border border-gray-300 rounded-md p-2 sm:p-4 focus:outline-none focus:ring focus:border-blue-500"
@@ -45,9 +55,10 @@ const ModalOne = ({
               <h2 className="text-lg">Industry</h2>
               <input
                 type="text"
-                placeholder="Information Technology"
-                name="companyName"
-                value={newData.companyName}
+                placeholder="Information Technology *"
+                name="industry"
+                required
+                value={newData.industry}
                 onChange={handleInputChange}
                 className="w-full border border-gray-300 rounded-md p-2 sm:p-4 focus:outline-none focus:ring focus:border-blue-500"
               />
@@ -77,18 +88,12 @@ const ModalOne = ({
               </div>
             </div>
 
-            <div className="flex justify-center items-center mt-8">
+            <div className="flex justify-end items-center mt-8">
               <button
-                onClick={handleAddButtonClick}
+                onClick={handleNext}
                 className="bg-blue-500 text-white px-6 py-3 rounded-md hover:bg-blue-700 hover:text-white"
               >
-                Add
-              </button>
-              <button
-                onClick={isAddModal}
-                className="ml-4 text-blue-500 hover:text-blue-700 focus:outline-none"
-              >
-                Cancel
+                Next
               </button>
             </div>
           </div>

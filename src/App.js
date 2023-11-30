@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import JobCard from "./components/JobCard";
 import ModalOne from "./components/ModalOne";
-import { ModalTwo } from "./components/ModalTwo";
 import EditModal from "./components/EditModal";
+import ModalTwo from "./components/ModalTwo";
 
 const App = () => {
   const [dataArray, setDataArray] = useState([
@@ -16,8 +16,9 @@ const App = () => {
       minExperience: 1,
       maxExperience: 2,
       minSalary: 30000,
-      maxSalary: 30000,
+      maxSalary: 40000,
       employees: "51-200",
+      applyType: "quick",
     },
     {
       id: 2,
@@ -29,10 +30,12 @@ const App = () => {
       minExperience: 1,
       maxExperience: 2,
       minSalary: 30000,
-      maxSalary: 30000,
+      maxSalary: 40000,
       employees: "51-200",
+      applyType: "external",
     },
   ]);
+
   const [newData, setNewData] = useState({
     title: "",
     companyName: "",
@@ -45,9 +48,11 @@ const App = () => {
     maxSalary: "",
     employees: "",
   });
+
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [editId, setEditId] = useState(null);
+  const [secondModal, setSecondModal] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -92,33 +97,17 @@ const App = () => {
   };
 
   const handleAddJob = () => {
-    if (
-      newData.title &&
-      newData.companyName &&
-      newData.industry &&
-      newData.location &&
-      newData.time &&
-      newData.minExperience &&
-      newData.maxExperience &&
-      newData.minSalary &&
-      newData.maxSalary &&
-      newData.employees
-    ) {
-      if (editId !== null) {
-        const updatedData = dataArray.map((item) =>
-          item.id === editId ? { ...item, ...newData } : item
-        );
-        setDataArray(updatedData);
-        setEditId(null);
-      } else {
-        const nextId =
-          dataArray.length > 0 ? dataArray[dataArray.length - 1].id + 1 : 1;
-        setDataArray([...dataArray, { id: nextId, ...newData }]);
-      }
+    if (editId !== null) {
+      const updatedData = dataArray.map((item) =>
+        item.id === editId ? { ...item, ...newData } : item
+      );
+      setDataArray(updatedData);
+      setEditId(null);
     } else {
-      alert("Please fill out all fields before adding.");
+      const nextId =
+        dataArray.length > 0 ? dataArray[dataArray.length - 1].id + 1 : 1;
+      setDataArray([...dataArray, { id: nextId, ...newData }]);
     }
-
     setIsEditModalOpen(false);
   };
 
@@ -154,10 +143,21 @@ const App = () => {
       )}
       {isAddModalOpen && (
         <ModalOne
-          isAddModal={isAddModal}
-          newData={newData}
           handleInputChange={handleInputChange}
-          handleAddButtonClick={handleAddJob}
+          newData={newData}
+          isAddModal={isAddModal}
+          setSecondModal={setSecondModal}
+        />
+      )}
+      {/* Second Modal */}
+      {secondModal && (
+        <ModalTwo
+          handleInputChange={handleInputChange}
+          newData={newData}
+          secondModal={secondModal}
+          handleAddJob={handleAddJob}
+          setSecondModal={setSecondModal}
+          isAddModal={isAddModal}
         />
       )}
     </div>
