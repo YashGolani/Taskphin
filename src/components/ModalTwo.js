@@ -64,7 +64,7 @@ const ModalTwo = ({
               </div>
               <h2 className="text-lg">Total Employees</h2>
               <input
-                type="text"
+                type="number"
                 placeholder="ex. 100"
                 name="employees"
                 value={newData.employees}
@@ -80,6 +80,9 @@ const ModalTwo = ({
                       id="quick"
                       name="applyType"
                       className="mr-1"
+                      value="quick"
+                      checked={newData.applyType === "quick"}
+                      onChange={handleInputChange}
                     />
                     <label htmlFor="quick">Quick Apply</label>
                   </div>
@@ -89,6 +92,9 @@ const ModalTwo = ({
                       id="external"
                       name="applyType"
                       className="mr-1"
+                      value="external"
+                      checked={newData.applyType === "external"}
+                      onChange={handleInputChange}
                     />
                     <label htmlFor="external">External Apply</label>
                   </div>

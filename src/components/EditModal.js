@@ -48,6 +48,7 @@ const EditModal = ({
                 type="text"
                 placeholder="Title"
                 name="title"
+                required
                 value={newData.title}
                 onChange={handleInputChange}
                 className="w-full border border-gray-300 rounded-md p-2 sm:p-4 focus:outline-none focus:ring focus:border-blue-500"
@@ -58,7 +59,18 @@ const EditModal = ({
                 type="text"
                 placeholder="Company Name"
                 name="companyName"
+                required
                 value={newData.companyName}
+                onChange={handleInputChange}
+                className="w-full border border-gray-300 rounded-md p-2 sm:p-4 focus:outline-none focus:ring focus:border-blue-500"
+              />
+
+              <input
+                type="text"
+                placeholder="Industry"
+                name="industry"
+                required
+                value={newData.industry}
                 onChange={handleInputChange}
                 className="w-full border border-gray-300 rounded-md p-2 sm:p-4 focus:outline-none focus:ring focus:border-blue-500"
               />

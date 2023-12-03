@@ -2,7 +2,6 @@ import React from "react";
 import { FaEdit, FaTrash } from "react-icons/fa";
 
 function JobCard({ data, onEdit, onDelete }) {
-  console.log("🚀 ~ file: JobCard.js:5 ~ JobCard ~ data:", data);
   const unsplashLink = "https://source.unsplash.com/featured/640x480";
   const imageUrl = `${unsplashLink}?${data.id}`;
 

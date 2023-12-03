@@ -9,7 +9,7 @@ const App = () => {
     {
       id: 1,
       title: "UX UI Designer",
-      companyName: "Great Vibes",
+      companyName: "Apple",
       industry: "Information Technology",
       location: "Chennai, Tamilnadu, India (In-office)",
       time: "Part-Time (9.00 am - 5.00 pm IST)",
@@ -23,7 +23,7 @@ const App = () => {
     {
       id: 2,
       title: "UX UI Designer",
-      companyName: "Great Vibes",
+      companyName: "Microsoft",
       industry: "Information Technology",
       location: "Chennai, Tamilnadu, India (In-office)",
       time: "Part-Time (9.00 am - 5.00 pm IST)",
@@ -32,6 +32,34 @@ const App = () => {
       minSalary: 30000,
       maxSalary: 40000,
       employees: "51-200",
+      applyType: "external",
+    },
+    {
+      id: 3,
+      title: "Software Engineer",
+      companyName: "Google",
+      industry: "Information Technology",
+      location: "Mountain View, CA, USA (Remote)",
+      time: "Full-Time",
+      minExperience: 2,
+      maxExperience: 5,
+      minSalary: 80000,
+      maxSalary: 120000,
+      employees: "10000+",
+      applyType: "quick",
+    },
+    {
+      id: 4,
+      title: "Data Scientist",
+      companyName: "Amazon",
+      industry: "E-Commerce",
+      location: "Seattle, WA, USA (Hybrid)",
+      time: "Full-Time",
+      minExperience: 3,
+      maxExperience: 7,
+      minSalary: 90000,
+      maxSalary: 150000,
+      employees: "100000+",
       applyType: "external",
     },
   ]);
@@ -47,6 +75,7 @@ const App = () => {
     minSalary: "",
     maxSalary: "",
     employees: "",
+    applyType: "",
   });
 
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
@@ -71,6 +100,7 @@ const App = () => {
       minSalary: "",
       maxSalary: "",
       employees: "",
+      applyType: "",
     });
 
     setIsAddModalOpen(true);
@@ -111,6 +141,10 @@ const App = () => {
     setIsEditModalOpen(false);
   };
 
+  console.log(
+    "if we want to send data to post request can send this object",
+    newData
+  );
   return (
     <div>
       <div className="flex justify-end p-2 px-4">

@@ -10,7 +10,7 @@ const ModalOne = ({
     if (newData.title && newData.companyName && newData.industry) {
       setSecondModal(true);
     } else {
-      alert("Please fill out all required fields before proceedinggggg.");
+      alert("Please fill out all required fields before proceeding.");
     }
   };
 
@@ -32,7 +32,7 @@ const ModalOne = ({
               <h2 className="text-2xl font-semibold">Step 1</h2>
             </div>
             <div className="mt-6 space-y-4">
-              <h2 className="text-lg">Job Title *</h2>
+              <h2 className="text-lg">Job Title*</h2>
               <input
                 type="text"
                 placeholder="Title"
@@ -42,20 +42,20 @@ const ModalOne = ({
                 onChange={handleInputChange}
                 className="w-full border border-gray-300 rounded-md p-2 sm:p-4 focus:outline-none focus:ring focus:border-blue-500"
               />
-              <h2 className="text-lg">Company Name</h2>
+              <h2 className="text-lg">Company Name*</h2>
               <input
                 type="text"
-                placeholder="Company Name *"
+                placeholder="Company Name"
                 name="companyName"
                 required
                 value={newData.companyName}
                 onChange={handleInputChange}
                 className="w-full border border-gray-300 rounded-md p-2 sm:p-4 focus:outline-none focus:ring focus:border-blue-500"
               />
-              <h2 className="text-lg">Industry</h2>
+              <h2 className="text-lg">Industry*</h2>
               <input
                 type="text"
-                placeholder="Information Technology *"
+                placeholder="Information Technology"
                 name="industry"
                 required
                 value={newData.industry}
